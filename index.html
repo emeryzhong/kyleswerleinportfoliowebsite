@@ -6,177 +6,233 @@
 
 <title>Kyle Swerlein</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --navy: #0B1423;
-  --lightblue: #CFE8FF;
-  --yellow: #FFF4B8;
-  --white: #FFFFFF;
+  --navy:#0B1423;
+  --lightblue:#CFE8FF;
+  --yellow:#FFF4B8;
+  --white:#ffffff;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--navy);
-  color: var(--lightblue);
+body{
+  font-family:'Manrope',sans-serif;
+  background:var(--navy);
+  color:var(--lightblue);
+  overflow-x:hidden;
+}
+
+/* FLOATING BACKGROUND */
+.blob{
+  position:fixed;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle, rgba(255,244,184,0.15), transparent);
+  top:-100px;
+  right:-100px;
+  z-index:0;
+}
+.blob2{
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(207,232,255,0.15), transparent);
+  bottom:-80px;
+  left:-80px;
+  z-index:0;
 }
 
 /* NAVBAR */
-.navbar {
-  position: fixed;
-  top:0;
+.navbar{
+  position:fixed;
   width:100%;
-  padding:18px 60px;
+  top:0;
   display:flex;
   justify-content:space-between;
-  backdrop-filter: blur(14px);
-  background: rgba(11,20,35,0.6);
+  padding:18px 60px;
+  backdrop-filter:blur(14px);
+  background:rgba(11,20,35,0.6);
   z-index:1000;
 }
 
-.nav-left {
-  font-family:'Playfair Display';
-  color: var(--white);
+.nav-left{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  color:var(--white);
 }
 
-.nav-center {
+.nav-center{
   display:flex;
   gap:30px;
 }
 
-.nav-center a {
+.nav-center a{
   cursor:pointer;
   position:relative;
 }
 
-.nav-center a::after {
+.nav-center a::after{
   content:"";
   position:absolute;
   bottom:-4px;
   left:0;
   width:0%;
   height:1px;
-  background: var(--yellow);
+  background:var(--yellow);
   transition:0.3s;
 }
 
-.nav-center a:hover::after {
+.nav-center a:hover::after{
   width:100%;
 }
 
-.nav-right span {
-  cursor:pointer;
-}
-
-/* OTHER PANEL */
-.other-panel {
-  position: fixed;
-  top:70px;
-  width:100%;
-  background: rgba(11,20,35,0.95);
-  backdrop-filter: blur(20px);
-  max-height:0;
-  overflow:hidden;
-  transition:0.4s ease;
-}
-
-.other-panel.active {
-  max-height:200px;
-}
-
-.other-content {
-  padding:30px 60px;
+.nav-right{
   display:flex;
-  gap:40px;
+  gap:20px;
+  align-items:center;
 }
 
-.other-content div {
+/* EMAIL ICON */
+.email-icon{
+  width:18px;
+  height:18px;
+  cursor:pointer;
+  fill:var(--lightblue);
+  transition:0.3s;
+}
+.email-icon:hover{
+  fill:var(--yellow);
+}
+
+/* OTHER NAV */
+.other-bar{
+  position:fixed;
+  top:65px;
+  width:100%;
+  background:rgba(11,20,35,0.95);
+  backdrop-filter:blur(16px);
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  padding:15px;
+  transform:translateY(-100%);
+  transition:0.4s;
+  z-index:999;
+}
+
+.other-bar.active{
+  transform:translateY(0);
+}
+
+.other-bar div{
   cursor:pointer;
 }
-
-.other-content div:hover {
-  color: var(--yellow);
+.other-bar div:hover{
+  color:var(--yellow);
 }
 
 /* SECTIONS */
-.section {
+.section{
   min-height:100vh;
   padding:120px 80px;
+  position:relative;
+  z-index:1;
 }
 
-/* HERO (CENTERED) */
-.hero {
+/* HERO */
+.hero{
   display:flex;
   justify-content:center;
   align-items:center;
-  text-align:center;
 }
 
-.hero h1 {
-  font-family:'Playfair Display';
-  font-size:60px;
-  color: var(--white);
+.hero-inner{
+  display:flex;
+  align-items:center;
+  gap:60px;
+}
+
+.photo{
+  width:280px;
+  height:280px;
+  background:var(--white);
+}
+
+.hero-text h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:56px;
+  color:var(--yellow);
   margin-bottom:10px;
 }
 
-.hero p {
-  font-size:18px;
-  opacity:0.8;
-  max-width:600px;
-  margin:auto;
+.hero-text p{
+  max-width:450px;
 }
 
-.meta {
+.meta{
   margin-top:10px;
   font-size:14px;
-  opacity:0.6;
+  opacity:0.7;
 }
 
-/* SECTION HEADERS */
-.section h2 {
-  font-family:'Playfair Display';
+/* HEADINGS */
+h2{
+  font-family:'Cormorant Garamond',serif;
   font-size:40px;
-  color: var(--white);
+  color:var(--yellow);
   margin-bottom:20px;
 }
 
 /* ABOUT */
-.about-content {
+.about{
   max-width:700px;
 }
 
-.about-content p {
+.about p{
   margin-bottom:15px;
 }
 
-.about-list {
-  margin-top:15px;
+.about-list{
   line-height:1.8;
 }
 
 /* CURRENT */
-.current-content {
+.current{
   max-width:700px;
 }
 
-.current-content p {
+.current p{
   margin-bottom:12px;
 }
 
 /* FOOTER */
-.footer {
+.footer{
   text-align:center;
   padding:60px;
-  color:var(--white);
   border-top:1px solid rgba(255,255,255,0.1);
+  color:var(--white);
+}
+
+/* FADE ANIMATIONS */
+.fade{
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.8s ease;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
+
+<div class="blob"></div>
+<div class="blob2"></div>
 
 <!-- NAV -->
 <div class="navbar">
@@ -189,66 +245,72 @@ body {
   </div>
 
   <div class="nav-right">
-    <span onclick="window.location='mailto:kyleswerlein@gmail.com'">✉</span>
+    <!-- EMAIL ICON -->
+    <svg class="email-icon" onclick="window.location='mailto:kyleswerlein@gmail.com'" viewBox="0 0 24 24">
+      <path d="M2 4h20v16H2V4zm10 9L2 6v12h20V6l-10 7z"/>
+    </svg>
+
     <span onclick="toggleOther()">Other ▾</span>
   </div>
 </div>
 
-<!-- OTHER PANEL -->
-<div class="other-panel" id="otherPanel">
-  <div class="other-content">
-    <div>Credentials</div>
-    <div>Projects</div>
-    <div>Stats</div>
-    <div>Process</div>
-  </div>
+<!-- OTHER NAV BAR -->
+<div class="other-bar" id="otherBar">
+  <div>Credentials</div>
+  <div>Projects</div>
+  <div>Stats</div>
+  <div>Process</div>
 </div>
 
 <!-- HERO -->
-<div id="home" class="section hero">
-  <div>
-    <h1>Hi, I’m Kyle Swerlein</h1>
-    <p>
-      Student focused on business, data tools, and structured problem-solving.
-      Currently pursuing early college coursework and preparing for business school.
-    </p>
+<div id="home" class="section hero fade">
+  <div class="hero-inner">
+    <div class="photo"></div>
 
-    <div class="meta">Tiffin Columbian High School</div>
-    <div class="meta">Terra State Community College · Business Management</div>
-    <div class="meta">kyleswerlein@gmail.com</div>
+    <div class="hero-text">
+      <h1>Hi, I’m Kyle Swerlein</h1>
+      <p>
+        Student focused on business, data tools, and structured problem-solving.
+        Currently pursuing early college coursework and preparing for business school.
+      </p>
+
+      <div class="meta">Tiffin Columbian High School</div>
+      <div class="meta">Terra State Community College · Business Management</div>
+      <div class="meta">kyleswerlein@gmail.com</div>
+    </div>
   </div>
 </div>
 
 <!-- ABOUT -->
-<div id="about" class="section">
+<div id="about" class="section fade">
   <h2>About</h2>
 
-  <div class="about-content">
+  <div class="about">
     <p>
-      I am a high school student balancing academics, leadership, and early college coursework while preparing for a future in business.
+      High school student balancing academics, leadership, and early college coursework while preparing for a future in business.
     </p>
 
     <div class="about-list">
       • Founder of Key Club  
-      • Member of National Honor Society  
+      • National Honor Society  
       • JA Titan participant  
-      • Volleyball Club and Choir involvement  
-      • Skills in Excel, Google Sheets, SQL, and computer science  
+      • Volleyball Club and Choir  
+      • Excel, Google Sheets, SQL, Computer Science  
       • First-generation college student  
-      • Wasian (Filipino & White), U.S. Citizen, Catholic  
+      • Wasian (Filipino & White), Catholic  
     </div>
   </div>
 </div>
 
 <!-- CURRENT -->
-<div id="current" class="section">
+<div id="current" class="section fade">
   <h2>Current Works</h2>
 
-  <div class="current-content">
-    <p>• Currently working to establish a volleyball club.</p>
-    <p>• Preparing for a business-focused academic path after high school.</p>
-    <p>• Planning to pursue a business-related job or apprenticeship over the summer.</p>
-    <p>• Continuing involvement in volunteering and community service.</p>
+  <div class="current">
+    <p>• Working to establish a volleyball club</p>
+    <p>• Pursuing a business-related summer apprenticeship</p>
+    <p>• Preparing for a business-focused university path</p>
+    <p>• Continuing volunteering and community service</p>
   </div>
 </div>
 
@@ -263,8 +325,18 @@ function scrollToSection(id){
 }
 
 function toggleOther(){
-  document.getElementById("otherPanel").classList.toggle("active");
+  document.getElementById("otherBar").classList.toggle("active");
 }
+
+/* FADE IN */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
 </script>
 
 </body>

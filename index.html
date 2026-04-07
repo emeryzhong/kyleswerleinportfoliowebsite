@@ -16,7 +16,6 @@
   --white:#ffffff;
 }
 
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
@@ -75,7 +74,6 @@ body{
   align-items:center;
 }
 
-/* EMAIL ICON */
 .email-icon{
   width:20px;
   height:20px;
@@ -126,7 +124,6 @@ body{
   border-radius:20px;
 }
 
-/* TEXT */
 .hero-text h1{
   font-family:'Space Grotesk';
   font-size:64px;
@@ -153,19 +150,82 @@ h2{
   margin-bottom:30px;
 }
 
-/* ABOUT */
-.about{
-  max-width:900px;
+/* NEW ABOUT SYSTEM */
+.about-wrapper{
+  display:flex;
+  gap:80px;
+  max-width:1000px;
   margin:auto;
-  font-size:18px;
-  line-height:1.7;
+  position:relative;
 }
 
-.about-list{
-  margin-top:20px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.about-left{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  font-size:14px;
+}
+
+.selector{
+  cursor:pointer;
+  opacity:0.6;
+  transition:0.3s;
+}
+
+.selector:hover{
+  opacity:1;
+  transform:translateX(5px);
+}
+
+.selector.active{
+  color:var(--yellow);
+  opacity:1;
+}
+
+.indicator{
+  position:absolute;
+  left:-14px;
+  width:3px;
+  height:20px;
+  background:var(--yellow);
+  border-radius:10px;
+  transition:top 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+
+.about-right{
+  flex:1;
+  position:relative;
+  min-height:120px;
+}
+
+.about-content{
+  position:absolute;
+  width:100%;
+  opacity:0;
+  transform:translateY(10px) scale(0.98);
+  filter:blur(4px);
+  transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+
+.about-content.active{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  filter:blur(0);
+}
+
+/* HOVER GLOW */
+.about-right::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 30%, rgba(255,244,184,0.08), transparent);
+  opacity:0;
+  transition:0.4s;
+}
+
+.about-wrapper:hover .about-right::after{
+  opacity:1;
 }
 
 /* CURRENT */
@@ -179,7 +239,6 @@ h2{
   margin-bottom:14px;
 }
 
-/* SOLID DESIGN ELEMENT */
 .divider{
   width:60px;
   height:4px;
@@ -188,7 +247,6 @@ h2{
   border-radius:10px;
 }
 
-/* FOOTER */
 .footer{
   text-align:center;
   padding:80px;
@@ -212,7 +270,6 @@ h2{
 
 <body>
 
-<!-- NAV -->
 <div class="navbar">
   <div class="nav-left">Kyle Swerlein</div>
 
@@ -231,7 +288,6 @@ h2{
   </div>
 </div>
 
-<!-- OTHER NAV -->
 <div class="other-bar" id="otherBar">
   <div>Credentials</div>
   <div>Projects</div>
@@ -247,7 +303,7 @@ h2{
     <div class="hero-text">
       <h1>Hi, I’m Kyle Swerlein</h1>
       <p>
-        I’m focused on business, data, and building real-world skills early. Right now I’m balancing high school, college coursework, and leadership roles while preparing for a future in business.
+        I’m focused on business, data, and building real-world skills early.
       </p>
 
       <div class="meta">Tiffin Columbian High School</div>
@@ -257,29 +313,48 @@ h2{
   </div>
 </div>
 
-<!-- ABOUT -->
+<!-- ABOUT (FINAL) -->
 <div id="about" class="section fade">
   <div class="divider"></div>
-  <h2>About</h2>
+  <h2>/ about</h2>
 
-  <div class="about">
-    <p>
-      I’m a student who’s focused on building a strong foundation in business while gaining real experience early. I’m currently working toward an Associate’s degree while still in high school, and I try to stay involved in leadership, teamwork, and community activities.
-    </p>
+  <div class="about-wrapper">
 
-    <p>
-      A lot of what I do revolves around developing discipline, learning practical skills, and putting myself in environments where I can grow.
-    </p>
+    <div class="about-left">
+      <div class="selector active" onclick="switchTab(0)">Clubs</div>
+      <div class="selector" onclick="switchTab(1)">Interests</div>
+      <div class="selector" onclick="switchTab(2)">Skills</div>
+      <div class="selector" onclick="switchTab(3)">Background</div>
 
-    <div class="about-list">
-      <div>• Key Club & Choir</div>
-      <div>• National Honor Society</div>
-      <div>• JA Titan participant</div>
-      <div>• Founder of Volleyball Club</div>
-      <div>• Excel, Sheets, SQL</div>
-      <div>• Learning Computer Science</div>
-      <div>• First-gen college student</div>
-      <div>• Wasian · Catholic</div>
+      <div class="indicator" id="indicator"></div>
+    </div>
+
+    <div class="about-right">
+
+      <div class="about-content active">
+        <p>• Founder of Volleyball Club</p>
+        <p>• NHS, Key Club, Choir</p>
+        <p>• JA Titan participant</p>
+      </div>
+
+      <div class="about-content">
+        <p>• Business & entrepreneurship</p>
+        <p>• Data & analytics</p>
+        <p>• Leadership & growth</p>
+      </div>
+
+      <div class="about-content">
+        <p>• Excel, Sheets, SQL</p>
+        <p>• Learning CS</p>
+        <p>• Problem solving</p>
+      </div>
+
+      <div class="about-content">
+        <p>• First-gen college student</p>
+        <p>• Wasian</p>
+        <p>• Catholic</p>
+      </div>
+
     </div>
   </div>
 </div>
@@ -290,18 +365,13 @@ h2{
   <h2>Current Works</h2>
 
   <div class="current">
-    <p>
-      Right now I’m focused on building both academic and real-world experience at the same time.
-    </p>
-
-    <p>• Starting to organize and grow a volleyball club</p>
-    <p>• Working toward a business-related apprenticeship this summer</p>
-    <p>• Continuing college coursework in business management</p>
-    <p>• Staying involved in volunteering and leadership activities</p>
+    <p>• Starting volleyball club</p>
+    <p>• Summer business apprenticeship</p>
+    <p>• College coursework</p>
+    <p>• Volunteering</p>
   </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
   "Everything is possible for one who believes" – Mark 9:23
 </div>
@@ -315,7 +385,20 @@ function toggleOther(){
   document.getElementById("otherBar").classList.toggle("active");
 }
 
-/* ANIMATIONS */
+function switchTab(index){
+  const contents=document.querySelectorAll(".about-content");
+  const tabs=document.querySelectorAll(".selector");
+  const indicator=document.getElementById("indicator");
+
+  contents.forEach(c=>c.classList.remove("active"));
+  tabs.forEach(t=>t.classList.remove("active"));
+
+  contents[index].classList.add("active");
+  tabs[index].classList.add("active");
+
+  indicator.style.top=tabs[index].offsetTop+"px";
+}
+
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
